@@ -145,6 +145,7 @@
             <input class="form-control" id="encHt" placeholder="Entrez ici le nom à donner au nouveau cours..."/>
             <h2>Matière</h2>
             <p class="help-block">Sélectionner une matière existante ou ajouter la votre.</p>
+            <br>
             <div class="row">
                 <div class="col-lg-2">
                     <select id="select"  class="form-control">
@@ -157,6 +158,8 @@
                     <input class="form-control noresize" id="matiere" placeholder="Entrez le nom de la nouvelle matière..."/>
                 </div>
             </div>
+            <h2 for="imageInput">Sélectionner une image</h2>
+            <input type="file" id="imageInput">
             <h2>Prise de notes</h2>
             <textarea class="form-control hresize" id="encJs2" placeholder="Entrez vos notes ici..." rows="15" cols="50"></textarea>
             <h2 for="exampleInputFile">Importer un fichier</h2>
@@ -170,13 +173,15 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
-
+        $("#imageInput").prop('disabled', true);
        jQuery(document).ready(function(){
             $('#matiere').keyup(function () {
                 if($('#matiere').val().length > 0) {
                     $("#select").prop('disabled', true);
+                    $("#imageInput").prop('disabled', false);
                 } else {
                     $("#select").prop('disabled', false);
+                    $("#imageInput").prop('disabled', true);
                 }
             })
         });

@@ -75,7 +75,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">Brouillons Maths</h2>
+                <h2 class="section-heading">Mes brouillons / Maths</h2>
+                <hr class="light">
             </div>
         </div>
     </div>
@@ -100,30 +101,30 @@
                 </tr>
                 </thead>
                 <tbody class="searchable">
-                <tr>
-                    <td>Intégrale</td>
-                    <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</a></td>
-                    <td id="inte">Non partagé</td>
-                    <td><a onclick="javascript:partager(inte)">Partager</a></td>
-                </tr>
-                <tr>
-                    <td>Dérivé</td>
-                    <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td id="der">Non partagé</td>
-                    <td><a onclick="javascript:partager(der)">Partager</a></td>
-                </tr>
-                <tr>
-                    <td>Statistique</td>
-                    <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td id="stat">Non partagé</td>
-                    <td><a onclick="javascript:partager(stat)">Partager</a></td>
-                </tr>
-                <tr>
-                    <td>Probabilité</td>
-                    <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td id="proba">Non partagé</td>
-                    <td><a onclick="javascript:partager(proba)">Partager</a></td>
-                </tr>
+                    <tr>
+                        <td>Intégrale</td>
+                        <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</a></td>
+                        <td id="inte">Non partagé</td>
+                        <td><a onclick="javascript:partager(inte)">Partager</a></td>
+                    </tr>
+                    <tr>
+                        <td>Dérivé</td>
+                        <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
+                        <td id="der">Non partagé</td>
+                        <td><a onclick="javascript:partager(der)">Partager</a></td>
+                    </tr>
+                    <tr>
+                        <td>Statistique</td>
+                        <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
+                        <td id="stat">Non partagé</td>
+                        <td><a onclick="javascript:partager(stat)">Partager</a></td>
+                    </tr>
+                    <tr>
+                        <td>Probabilité</td>
+                        <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
+                        <td id="proba">Non partagé</td>
+                        <td><a onclick="javascript:partager(proba)">Partager</a></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -157,10 +158,24 @@
     </div>
 </section>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 <script>
     function partager(cour) {
         cour = "Partagé";
     }
+
+   jQuery(document).ready(function(){
+        $('#filter').keyup(function () {
+
+            var rex = new RegExp($(this).val(), 'i');
+            $('.searchable tr').hide();
+            $('.searchable tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+
+        })
+    });
 </script>
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
