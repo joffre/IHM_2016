@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HelpYourCommunity</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="../css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script language="JavaScript">
+//<!--  J. Le Montagner 01/10/98
+var enonce_quest = new Array;
+var nb_eltsform = new Array;
+var formans = new Array;
+var commentaire = new Array;
+var ans = new Array;
+var done = new Array;
+var panswer = new Array;
+var score = 0;
+var rep = 0;
+compte3=0;
+
+var nb_elts=4;//Nombre de questions
+
+
+var nb_elts_tot=nb_elts
+
+
+enonce_quest [1]=" HTTPS est :  "
+
+nb_eltsform[1]=4
+
+formans[1]="procédé de sécurisation des transactions HTTP"
+formans[2]="HTTPS travaille au niveau de la couche transport "
+formans[3]=" Il permet de fournir une sécurisation des échanges lors de transactions de commerce électronique en cryptant les messages "
+
+ans[1] = 3;
+
+commentaire[1]="Explication du choix de la réponse "
+
+
+enonce_quest [2]="le javascript"
+
+nb_eltsform[2]=3
+
+formans[5]="se comporte de façon identique sur tous les navigateurs"
+formans[6]="est compatible avec tous les navigateurs "
+formans[7]="peut être désactivé par l'utilisateur "
+
+ans[2] = 3;
+
+commentaire[2]="le javascript peut être désactivé par l'utilisateur<br>son comportement peut varier selon le navigateur et aussi selon la version d'un même navigateur, voire marcher avec l'un et pas avec un autre<br>Certains navigateurs (peu répandu) ne le gérent pas"
+
+
+enonce_quest [3]="TIFF est un format :"
+
+nb_eltsform[3]=4
+
+formans[8]="d’images"
+formans[9]="de base de données "
+formans[10]="de Terminal Informatique de type FF "
+formans[11]="de protocole internet "
+
+
+ans[3] = 1;
+
+commentaire[3]="Bla bla bla bla"
+
+
+
+enonce_quest [4]="Quel est l’atout de la technologie RAID ?"
+
+nb_eltsform[4]=3
+
+formans[12]="Le contrôle des données"
+formans[13]="la protection contre le piratage"
+formans[14]="la performance"
+
+
+
+ans[4] = 1;
+
+commentaire[4]="Bla bla bla bla"
+
+//hklhkhhk
+
+enonce_quest [5]="Une URL (Uniform Resource Locator) est composé obligatoirement de certains éléments, ci dessous, un est facultatif  :"
+
+nb_eltsform[5]=3
+
+formans[15]="du protocole de communication"
+formans[16]="HTTPS travaille au niveau de la couche transport"
+formans[17]="Il permet de fournir une sécurisation des échanges lors de transactions de commerce électronique en cryptant les messages"
+
+ans[5] = 1;
+
+commentaire[5]="Bla bla bla bla"
+
+
+
+function Engine(question, answer) {
+if (answer != ans[question]) {
+if (!done[question]) {
+done[question] = -1;
+rep++;
+panswer[question]=answer;
+}
+else {
+done[question] = -1;
+
+panswer[question]=answer;
+   }
+}
+else {
+if (!done[question]) {
+done[question] = -1;
+rep++;
+panswer[question]=answer;
+}
+else {
+panswer[question]=answer;
+  }
+   }}
+function NextLevel () {
+
+score=0;
+for (var i=1;i<(nb_elts_tot+1);i++){
+ if (panswer[i]==ans[i]){score++;
+ }
+}
+ }
+function correction() {
+if (rep>= nb_elts ) {
+NextLevel ()
+
+
+correc=open("","correction","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=1,resizable=1,width=500,height=350");
+correc.document.write('<BODY TEXT="#000000" BGCOLOR="#FFFFC0" LINK="#0000FF" VLINK="#800080" ALINK="#FF00FF"><b><center>VOS REPONSES!</center><BR><BR>');
+  score=0;
+for (var i=1;i<(nb_elts_tot+1);i++){
+ correc.document.write('QUESTION <font color="#FF0000"><b><strong>'+i+' : '+panswer[i].toUpperCase()+'</font ></b></strong>');
+if (panswer[i]==ans[i]){score++;
+ correc.document.write("  => EXACT<BR>");
+}
+else{
+ correc.document.write("  => FAUX<BR>");
+}
+}
+
+
+
+ correc.document.write("    <br>");
+valid=1;
+ correc.document.write("VOUS AVEZ "+score+" BONNES REPONSES SUR "+nb_elts_tot+"<BR><BR>");
+
+
+correc.document.write('<b><center>CORRECTION</center><BR><BR></center>');
+
+
+
+for (var k=1;k<(nb_elts_tot+1);k++){
+
+correc.document.write(" QUESTION <font color='#FF0000'><b><strong>"+k+" "+enonce_quest[k]+"</font></b></strong>  - la bonne réponse est :<font color='#FF0000'><b><strong>"+ans[k]+"</font></b></strong><br>"+commentaire[k]+"<br><br>");}
+
+correc.document.write('ATTENTION ! Si vous revenez aux questions précédentes le numéro des bonnes réponses peut changer, leur tirage étant aléatoire.</center><BR></font></b></strong></center></p><br><hr width="75%">');
+
+correc.document.close();
+
+}
+else {
+   alert("REPONDEZ D'ABORD A TOUS LES QCM, SVP !");
+  }  }
+
+function affich_pag(){
+ var compte=0
+var compte2=0
+inumber=3
+ randomnumber = Math.random() ;
+ rand1 = Math.round( (inumber-1) * randomnumber) + 1 ;
+
+for (var i=1;i<=(nb_elts);i++) {document.write("<p><font color='#000000'><b><strong>"+i+" -"+enonce_quest[i]+"</strong></font></p></b><font color='#000080'><blockquote>");
+compte2=compte
+trouv=0
+for (var j=rand1+compte2;j<(nb_eltsform[i]+1+compte2);j++){
+
+ document.write(j-compte2-rand1+1+" - "+formans[j]+"<BR>");compte++;
+if (ans[i]==j-compte2 && trouv==0){
+ans[i]=j-compte2-rand1+1;
+trouv=1}
+}
+if (rand1>nb_eltsform[i]){
+for (var j=compte2+1;j<(nb_eltsform[i]+1+compte2);j++){
+
+ document.write(j-compte2+" - "+formans[j]+"<BR>");compte++;
+if (ans[i]==j-compte2 && trouv==0){
+ans[i]=j-compte2;
+trouv=1}}
+}
+else{
+if (rand1+compte2>compte2+1){for (var j=compte2+1;j<rand1+compte2;j++){
+
+ document.write(j-compte2+nb_eltsform[i]+1-rand1+" - "+formans[j]+"<BR>")
+compte++;
+if (trouv==1){ligne=0}
+
+if (ans[i]==j-compte2 && trouv==0){
+ans[i]=j-compte2+nb_eltsform[i]+1-rand1;trouv=1}
+}}
+}
+document.write('</font><form method="POST"><p>Cochez la bonne réponse : </font>')
+for (var k=1;k<(nb_eltsform[i]+1);k++){document.write(' <input type="radio" name="q"  value="'+k+'"onclick="Engine('+i+',this.value)"><font color="#FF0000"><strong>'+k+'   </strong></font>')
+}
+document.write('</p></form></blockquote>')}
+              }
+// -->// End copyright Dr J. Le Montagner 03/02/98-->
+
+</script>
+
+</head>
+
+<body id="page-top">
+
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Help Your Community</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="index.html">Acceuil</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Classement</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- <header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>Help Your Community</h1>
+            <hr>
+            <p>Nous avons développer cette application pour les étudiants soucieux de d'échanger sur les différents cours de leur formation afin de réussir au mieux leurs examens.</p>
+            <a href="#portfolio" class="btn btn-primary btn-xl page-scroll">Accéder au menu d'application</a>
+        </div>
+    </div>
+</header> -->
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Mes cours / Maths / Quizz</h2>
+                <hr class="light">
+                <p class="text-faded">Ce quizz permet de vérifier vos connaissances.</p>
+                <!--<a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section id="services">
+    <div class="container">
+        <div class="row">
+           <div class="col-lg-12 text-center">
+                <h2 class="section-heading">At Your Service</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>-->
+<!-- <div class="container">
+     <div class="row">
+         <div class="col-lg-3 col-md-6 text-center">
+             <div class="service-box">
+                 <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                 <h3>Sturdy Templates</h3>
+                 <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+             </div>
+         </div>
+         <div class="col-lg-3 col-md-6 text-center">
+             <div class="service-box">
+                 <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                 <h3>Ready to Ship</h3>
+                 <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+             </div>
+         </div>
+         <div class="col-lg-3 col-md-6 text-center">
+             <div class="service-box">
+                 <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                 <h3>Up to Date</h3>
+                 <p class="text-muted">We update dependencies to keep things fresh.</p>
+             </div>
+         </div>
+         <div class="col-lg-3 col-md-6 text-center">
+             <div class="service-box">
+                 <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                 <h3>Made with Love</h3>
+                 <p class="text-muted">You have to make your websites with love these days!</p>
+             </div>
+         </div>
+     </div>
+ </div> -->
+</section>
+
+<section class="no-padding" id="portfolio">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <table border="0" cellspacing="0" width="100%">
+                <tr>
+                    <p>
+                        <script>
+            affich_pag()
+            </script> </p>
+                    <form>
+                        <div align="center"><center><p><input class="btn" type="button"
+                                                              value=" VOS RESULTATS ET LA CORRECTION" onclick="correction()"> </p>
+                        </center></div>
+                    </form>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</section>
+<section class="no-padding">
+    <!-- Debut shoutbox - http://www.i-tchat.com -->
+    <br>
+    <div>
+        <!-- Debut shoutbox - http://www.i-tchat.com -->
+        <iframe src="http://www.i-tchat.com/shoutbox/shoutbox.php?idShoutbox=128043" width="600" height="350" frameborder="0" allowtransparency="true" >Votre navigateur semble incompatible, essayez d'ouvrir le <a href="http://www.i-tchat.com" title="tchat" onClick="window.open(this.href+'?128043');">tchat</a>, ou rencontrez le webmaster pour plus d'informations.</iframe>
+        <!-- Fin shoutbox -->
+    </div>
+    <!-- Fin shoutbox -->
+
+</section>
+<aside class="bg-dark">
+    <div class="container text-center">
+        <div class="call-to-action">
+        </div>
+    </div>
+</aside>
+
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Des questions ? Des suggestions ? Utilisez les moyens ci-dessous pour nous contacter</h2>
+                <hr class="primary">
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                <p>04 55 65 45 12 12</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <p><a href="mailto:your-email@your-domain.com">assistance@helpyourcommunity.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="../js/jquery.easing.min.js"></script>
+<script src="../js/jquery.fittext.js"></script>
+<script src="../js/wow.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../js/creative.js"></script>
+
+</body>
+
+</html>

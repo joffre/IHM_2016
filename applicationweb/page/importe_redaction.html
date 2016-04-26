@@ -31,7 +31,12 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
 </head>
 
 <body id="page-top">
@@ -161,7 +166,8 @@
             <h2 for="imageInput">Sélectionner une image</h2>
             <input type="file" id="imageInput">
             <h2>Prise de notes</h2>
-            <textarea class="form-control hresize" id="encJs2" placeholder="Entrez vos notes ici..." rows="15" cols="50"></textarea>
+            <textarea id="mytextarea">Ecrire ici vos notes...</textarea>
+
             <h2 for="exampleInputFile">Importer un fichier</h2>
             <input type="file" id="exampleInputFile">
             <br>
@@ -170,6 +176,7 @@
         </form>
     </div>
 </section>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
