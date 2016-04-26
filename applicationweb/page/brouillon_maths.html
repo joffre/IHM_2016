@@ -96,28 +96,33 @@
                     <th>Nom</th>
                     <th>Cours</th>
                     <th>Partage</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody class="searchable">
                 <tr>
                     <td>Intégrale</td>
                     <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</a></td>
-                    <td>Non partagé</td>
+                    <td id="inte">Non partagé</td>
+                    <td><a onclick="javascript:partager(inte)">Partager</a></td>
                 </tr>
                 <tr>
                     <td>Dérivé</td>
                     <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td>Non partagé</td>
+                    <td id="der">Non partagé</td>
+                    <td><a onclick="javascript:partager(der)">Partager</a></td>
                 </tr>
                 <tr>
                     <td>Statistique</td>
                     <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td>Non partagé</td>
+                    <td id="stat">Non partagé</td>
+                    <td><a onclick="javascript:partager(stat)">Partager</a></td>
                 </tr>
                 <tr>
                     <td>Probabilité</td>
                     <td><a href="javascript:void(0);">Cliquer pour télécharger le cours</td>
-                    <td>Non partagé</td>
+                    <td id="proba">Non partagé</td>
+                    <td><a onclick="javascript:partager(proba)">Partager</a></td>
                 </tr>
                 </tbody>
             </table>
@@ -152,6 +157,11 @@
     </div>
 </section>
 
+<script>
+    function partager(cour) {
+        cour = "Partagé";
+    }
+</script>
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
